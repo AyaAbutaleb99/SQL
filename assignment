@@ -1,0 +1,10 @@
+create function calculate_salary9 (p_sal number,p_date date,p_empno number) return number
+is 
+v_totalsal number(20);
+v_empno number(20);
+begin 
+select ((sal*(months_between(trunc(sysdate),p_date)))/(trunc(sysdate) - p_date))*(trunc(sysdate) - p_date),empno
+into v_totalsal,v_empno
+where empno = p_empno;
+return v_totalsal;
+end;
